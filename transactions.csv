@@ -1,0 +1,6 @@
+ID,Amount,Type,Created At,Account ID
+1,1000,DEPOSIT,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),1
+2,500,WITHDRAW,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),2
+3,1500,DEPOSIT,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),3
+4,800,WITHDRAW,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),4
+5,2000,DEPOSIT,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),5

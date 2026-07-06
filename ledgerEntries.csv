@@ -1,0 +1,6 @@
+ID,Entry Type,Amount,Balance After,Created At,Account ID,Transaction ID
+1,CREDIT,1000,6000,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),1,1
+2,DEBIT,500,6500,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),2,2
+3,CREDIT,1500,4500,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),3,3
+4,DEBIT,800,8200,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),4,4
+5,CREDIT,2000,14000,Wed Jul 01 2026 07:12:23 GMT+0530 (India Standard Time),5,5

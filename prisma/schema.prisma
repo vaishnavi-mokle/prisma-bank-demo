@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  
+  
+  accounts  Account[]
+}
+
+model Account {
+  id             Int            @id @default(autoincrement())
+  accountNumber  String         @unique
+  balance        Decimal        @default(0.00) @db.Decimal(15,2)
+
+  userId         Int
+  user           User           @relation(fields: [userId], references: [id])
+
+  transactions   Transaction[]
+  ledgerEntries  LedgerEntry[]
+}
+
+model Transaction {
+  id          Int        @id @default(autoincrement())
+  amount      Decimal    @db.Decimal(15,2)
+  type        String
+  createdAt   DateTime   @default(now())
+
+  accountId   Int
+  account     Account    @relation(fields: [accountId], references: [id])
+
+  ledgerEntries LedgerEntry[]
+}
+
+model LedgerEntry {
+  id             Int        @id @default(autoincrement())
+  entryType      String
+  amount         Decimal    @db.Decimal(15,2)
+  balanceAfter   Decimal    @db.Decimal(15,2)
+  createdAt      DateTime   @default(now())
+
+  accountId      Int
+  account        Account    @relation(fields: [accountId], references: [id])
+
+  transactionId  Int
+  transaction    Transaction @relation(fields: [transactionId], references: [id])
+}
+model TransferRequest {
+  id               Int      @id @default(autoincrement())
+  idempotencyKey   String   @unique
+  transactionId    String?
+  fromAccountId    Int
+  toAccountId      Int
+  amount           Float
+  status           String
+  createdAt        DateTime @default(now())
+}
