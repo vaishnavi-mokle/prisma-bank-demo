@@ -1,21 +1,11 @@
-name: Banking API CI
-
-on:
-  push:
-    branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
-    steps:
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
+    steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
