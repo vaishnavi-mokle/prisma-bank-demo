@@ -3,7 +3,43 @@ const { Prisma } = require("@prisma/client");
 const prisma = require("../db");
 
 const router = express.Router();
+// GET All Transactions
+// Search Transactions
+router.get("/search", async (req, res) => {
+    try {
 
+        const { type, accountId } = req.query;
+
+        const where = {};
+
+        if (type) {
+            where.type = type;
+        }
+
+        if (accountId) {
+            where.accountId = parseInt(accountId);
+        }
+
+        const transactions = await prisma.transaction.findMany({
+            where
+        });
+
+        if (transactions.length === 0) {
+            return res.status(404).json({
+                message: "No transactions found"
+            });
+        }
+
+        res.json(transactions);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
+});
 router.post("/withdraw", async (req, res) => {
 
     const { accountId, amount } = req.body;
