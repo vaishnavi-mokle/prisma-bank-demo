@@ -8,6 +8,15 @@ const app = express();
 
 app.use(express.json());
 
+// Home Route
+app.get("/", (req, res) => {
+    res.json({
+        message: "Welcome to Banking API",
+        status: "Running",
+        version: "1.0.0"
+    });
+});
+
 app.use("/transaction", transactionRoutes);
 app.use("/account", accountRoutes);
 app.use("/ledger", ledgerRoutes);
